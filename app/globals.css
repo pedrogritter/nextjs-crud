@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: black;
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/4a-1920x1080-a7691befb6390dbf2969f271c17356f2.png?resize=1&w=1920");
+    
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    
+    /* Full height */
+    height: 100%; 
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
