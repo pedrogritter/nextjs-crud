@@ -2,22 +2,22 @@ import Link from "next/link";
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
 
-async function getCharacters() {
+async function getFighters() {
   const res = await fetch(
-    "http://127.0.0.1:8090/api/collections/characters/records?page=1&perPage=30",
+    "http://127.0.0.1:8090/api/collections/fighters/records?page=1&perPage=30",
     { cache: "no-store" }
   );
   const data = await res.json();
   return data?.items as any[];
 }
 
-const CharactersList = async () => {
-  const characters = await getCharacters();
+const FightersList = async () => {
+  const fighters = await getFighters();
 
   return (
     <div className="w-screen flex flex-row mx-5 gap-3 items-stretch px-8 py-8">
-      {characters?.map((character) => {
-        return <CharacterCard key={character.id} character={character} />;
+      {fighters?.map((fighter) => {
+        return <CharacterCard key={fighter.id} character={fighter} />;
       })}
     </div>
   );
@@ -52,4 +52,4 @@ function CharacterCard({ character }: any) {
   );
 }
 
-export default CharactersList;
+export default FightersList;

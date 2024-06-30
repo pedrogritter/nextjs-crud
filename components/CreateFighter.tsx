@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-export const CreateCharacter = () => {
+export const CreateFighter = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
@@ -10,8 +10,29 @@ export const CreateCharacter = () => {
 
   const router = useRouter();
 
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
   const createFighter = async () => {
-    await fetch("http://127.0.0.1:8090/api/collections/characters/records", {
+    // try {
+    //   await fetch("http://127.0.0.1:8090/api/collections/fighters/records", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       name,
+    //       description,
+    //       country,
+    //       style,
+    //     }),
+    //   });
+    //   return (message: "New Fighter Added");
+    // } catch (error) {
+    //   return { message: 'API Error: Failed Add Fighter' };
+    // }
+
+    await fetch("http://127.0.0.1:8090/api/collections/fighters/records", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,8 +54,10 @@ export const CreateCharacter = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h3 className="text-lg text-zinc-100">Know another legendary fighter?</h3>
+    <div className="container mx-auto bg-slate-500 bg-opacity-30  rounded-sm p-7">
+      <h3 className="text-lg text-zinc-100 pb-3">
+        Know another legendary fighter?
+      </h3>
       <form className="flex flex-col gap-1 max-w-fit" onSubmit={createFighter}>
         <input
           className="p-2"
